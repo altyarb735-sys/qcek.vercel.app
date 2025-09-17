@@ -17,7 +17,7 @@
   </head>
   <body>
     <h1>✅ Invitation</h1>
-    <p id="codeBox" class="code">Loading...</p>
+    <p class="code">5GRAD_JUST25-0487 (ID <span id="idNumber">Loading...</span>)</p>
     <p>Your invitation is valid. Please present your QR at the gate.</p>
     <p style="color:#666">Note: Only the gate scanner can check you in.</p>
 
@@ -34,13 +34,13 @@
 
       // عرض الرمز في الصفحة
       const code = getParameterByName('t');
-      const codeBox = document.getElementById('codeBox');
+      const idNumberElement = document.getElementById('idNumber');
       
       if (code) {
-        codeBox.textContent = "ID: " + code;
+        idNumberElement.textContent = code;
       } else {
-        codeBox.textContent = "❌ No ID found in link";
-        codeBox.style.color = "#ff0000";
+        idNumberElement.textContent = "Not Found";
+        idNumberElement.style.color = "#ff0000";
       }
     </script>
   </body>
