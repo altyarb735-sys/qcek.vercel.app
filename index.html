@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Check-in</title>
+    <style>
+      body { font-family: Arial; text-align: center; padding: 40px; }
+      .code {
+        font-size: 1.4rem;
+        margin-top: 20px;
+        padding: 10px;
+        background: #f4f4f4;
+        display: inline-block;
+        border-radius: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>✅ Invitation</h1>
+    <p id="codeBox" class="code">Loading...</p>
+    <p>Your invitation is valid. Please present your QR at the gate.</p>
+    <p style="color:#666">Note: Only the gate scanner can check you in.</p>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get("t");
+
+      const codeBox = document.getElementById("codeBox");
+      if (code) {
+        codeBox.textContent = "ID: " + code;
+      } else {
+        codeBox.textContent = "❌ No ID found in link";
+      }
+    </script>
+  </body>
+</html>
