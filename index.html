@@ -22,14 +22,25 @@
     <p style="color:#666">Note: Only the gate scanner can check you in.</p>
 
     <script>
-      const params = new URLSearchParams(window.location.search);
-      const code = params.get("t");
+      // استرجاع المعامل من الرابط
+      function getParameterByName(name, url = window.location.href) {
+        name = name.replace(/[\[\]]/g, '\\$&');
+        const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+        const results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+      }
 
-      const codeBox = document.getElementById("codeBox");
+      // عرض الرمز في الصفحة
+      const code = getParameterByName('t');
+      const codeBox = document.getElementById('codeBox');
+      
       if (code) {
         codeBox.textContent = "ID: " + code;
       } else {
         codeBox.textContent = "❌ No ID found in link";
+        codeBox.style.color = "#ff0000";
       }
     </script>
   </body>
